@@ -36,11 +36,10 @@ class SignUp extends React.Component<any, SignUpState>{
       await axios.post('sign_up/user', {
         account,
         password,
-        password_conformation : passwordConfirmation
-        
+        password_confirmation : passwordConfirmation
       })
       console.log('成功！');
-      
+      this.props.history.push('/')
     }catch(e){
       console.log(e.response.data.errors)
     }
@@ -48,8 +47,6 @@ class SignUp extends React.Component<any, SignUpState>{
 
   public render() {
     const { account, password, passwordConfirmation} = this.state
-    console.log(this.state.account, this.state.password, this.state.passwordConfirmation);
-    
     return (
       <div className="SignUp" id="SignUp">
         <h1>番茄钟注册</h1>
@@ -62,7 +59,7 @@ class SignUp extends React.Component<any, SignUpState>{
         />
         <Input.Password value={password} placeholder="请输入您的密码" onChange={this.onChangePassword} />
         <Input.Password value={passwordConfirmation} placeholder="请再次输入您的密码" onChange={this.onChangePasswordConfirmation} />
-        <Button type="primary" className="loginButton" onClick={this.submit}>注册</Button>
+        <Button type="primary" className="signUpButton" onClick={this.submit}>注册</Button>
         <p>如果你有账号，请立即<Link to="/login">登录</Link></p>
       </div>
     )
