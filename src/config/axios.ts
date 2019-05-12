@@ -1,4 +1,5 @@
 import axios from 'axios'
+import history from './history'
 
 const appID = 'DyAShocuh1yeoTr5J7STq9Nf'
 const appSecret = 'BRLL72sYYcJ4L75BMWQ2zGX8'
@@ -15,9 +16,9 @@ const instance = axios.create({
 // Add a request interceptor
 instance.interceptors.request.use(function (config) {
   // Do something before request is sent
-  
+
   const xToken = localStorage.getItem('x-token')
-  if(xToken){
+  if (xToken) {
     config.headers['Authorization'] = `Bearer ${xToken}`
   }
   return config;
@@ -29,14 +30,18 @@ instance.interceptors.request.use(function (config) {
 
 // Add a response interceptor
 instance.interceptors.response.use(function (response) {
-  if(response.headers['x-token']){
-    localStorage.setItem('x-token',response.headers['x-token'])
+  if (response.headers['x-token']) {
+    localStorage.setItem('x-token', response.headers['x-token'])
   }
   // Do something with response data
   return response;
 }, function (error) {
+  if(error.response.status === 401){
+    console.log('重定向');
+    history.push('/login')
+  }
   // Do something with response error
-  return Promise.reject(error);
+  return Promise.reject(error); //有什么用？
 });
 
 export default instance

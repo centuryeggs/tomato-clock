@@ -3,12 +3,13 @@ import './App.css';
 import Index from './components/Index/Index'
 import Login from './components/Login/Login'
 import SignUp from './components/SignUp/SignUp'
-import { BrowserRouter as Router, Route} from "react-router-dom";
+import {Router, Route} from "react-router-dom";
+import history from './config/history'
 
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router history={history}>
       <div className="App">
         <Route exact path="/" component={Index} />
         <Route path="/login" component={Login} />
