@@ -3,7 +3,7 @@ import { Button } from 'antd'
 import axios from '../../config/axios'
 
 const initialState = {
-  user: {'account':""}
+  user: { 'account': "" }
 }
 type State = Readonly<typeof initialState>
 class Index extends React.Component<any, State>{
@@ -17,15 +17,8 @@ class Index extends React.Component<any, State>{
   }
 
   getMe = async () => {
-    try {
-      const response = await axios.get('me')
-      this.setState({ user: response.data })
-      
-    } catch (e) {
-      // if(e.response.status === 401){  //与后端约定登录验证失败返回状态码401
-      //   this.props.history.push('/login')
-      // }
-    }
+    const response = await axios.get('me')
+    this.setState({ user: response.data })
   }
 
   logout = () => {
