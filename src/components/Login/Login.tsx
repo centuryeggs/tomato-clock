@@ -12,9 +12,6 @@ const initialState = {
 type State = Readonly<typeof initialState>;
 
 class Login extends React.Component<any, State>{
-  constructor(props: any) {
-    super(props)
-  }
   readonly state: State = initialState;
 
   onChange = (key: keyof State, value: string) => {

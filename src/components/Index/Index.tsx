@@ -1,15 +1,29 @@
 import * as React from 'react';
-import { Button } from 'antd'
+import { Dropdown, Icon, Menu } from 'antd'
+import Todos from '../Todos/Todos'
 import axios from '../../config/axios'
+import history from '../../config/history'
+import './Index.scss'
+
+const logout = () => {
+  localStorage.setItem('x-token', '')
+  history.push('/login')
+}
+const menu = (
+  <Menu>
+    <Menu.Item key="1"><Icon type="user" />个人设置</Menu.Item>
+    <Menu.Item key="2" onClick={logout}><Icon type="user" />登出</Menu.Item>
+  </Menu>
+);
+
+
+
 
 const initialState = {
   user: { 'account': "" }
 }
 type State = Readonly<typeof initialState>
 class Index extends React.Component<any, State>{
-  constructor(props: any) {
-    super(props)
-  }
   readonly state: State = initialState
 
   async componentWillMount() {
@@ -21,15 +35,19 @@ class Index extends React.Component<any, State>{
     this.setState({ user: response.data })
   }
 
-  logout = () => {
-    localStorage.setItem('x-token', '')
-    this.props.history.push('/login')
-  }
+
   render() {
     return (
-      <div className="Index">
-        <p>欢迎，{this.state.user.account}</p>
-        <Button onClick={this.logout}>登出</Button>
+      <div className="Index" id="Index">
+        <header>
+          <span className="logo">Logo</span>
+          <Dropdown overlay={menu}>
+          <span>{this.state.user.account}<Icon type="down" style={{marginLeft:8}}/></span>
+          </Dropdown>
+        </header>
+        <main>
+          <Todos />
+        </main>
       </div>
     )
   }

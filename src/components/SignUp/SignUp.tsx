@@ -12,9 +12,7 @@ const initialState = {
 }
 type State = Readonly<typeof initialState>
 class SignUp extends React.Component<any, State>{
-  constructor(props: any) {
-    super(props)
-  }
+
   readonly state: State = initialState;
 
   onChange = (key: keyof State, value: string) => {
@@ -32,7 +30,7 @@ class SignUp extends React.Component<any, State>{
         password_confirmation: passwordConfirmation
       })
       console.log('成功！');
-      this.props.history.push('/')
+      this.props.history.push('/')// 没用constructor(props)，为什么能调用到history
     } catch (e) {
       console.log(e.response.data.errors)
     }
