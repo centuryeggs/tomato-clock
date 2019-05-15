@@ -10,11 +10,11 @@ class TodoInput extends React.Component <any,State>{
 
   addTodo = ()=>{
     this.props.addTodo({description: this.state.description})
+    this.setState({description: ""})
   }
   onKeyUp = (e)=>{
     if(e.key === 'Enter' && this.state.description !== ''){
       this.addTodo()
-      this.setState({description: ""})
     }
   }
   render() {

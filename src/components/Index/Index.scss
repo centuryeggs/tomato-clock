@@ -1,10 +1,17 @@
 #Index{
   max-width: 1000px;
+  margin: 0 auto;
   >header{
     display: flex;
-    padding: 16px;
+    padding: 16px 0;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #dddddd;
+  }
+  >main{
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    
   }
 }
