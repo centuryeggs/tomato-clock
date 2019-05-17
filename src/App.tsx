@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Index from './components/Index/Index'
+import Home from './components/Home/Home'
 import Login from './components/Login/Login'
 import SignUp from './components/SignUp/SignUp'
 import {Router, Route} from "react-router-dom";
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <Router history={history}>
       <div className="App">
-        <Route exact path="/" component={Index} />
+        <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/signUp" component={SignUp} />
       </div>
