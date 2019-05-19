@@ -3,7 +3,7 @@ import { Checkbox, Icon } from 'antd';
 import { connect } from 'react-redux'
 import '../Todos/TodoItem.scss'
 import classNames from 'classnames'
-import { editTodos, updateTodos } from 'redux/actions'
+import { editTodos, updateTodos } from 'redux/actions/todos'
 import axios from '../../config/axios'
 
 interface Props {

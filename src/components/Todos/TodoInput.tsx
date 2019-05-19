@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Input, Icon} from 'antd'
 import {connect} from 'react-redux'
-import {addTodo} from 'redux/actions'
+import {addTodo} from 'redux/actions/todos'
 import axios from '../../config/axios'
 
 const initialState = {
@@ -27,7 +27,7 @@ class TodoInput extends React.Component <Props,State>{
       throw new Error(e)
     }
     this.setState({description: ""})
-  }
+  } 
   onKeyUp = (e)=>{
     if(e.key === 'Enter' && this.state.description !== ''){
       this.postTodo()

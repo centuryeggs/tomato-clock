@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux'
-import { initTodos } from 'redux/actions'
+import { initTodos } from 'redux/actions/todos'
 import './Todos.scss'
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Dropdown, Icon, Menu } from 'antd'
 import Todos from '../Todos/Todos'
+import Tomatoes from '../Tomatoes/Tomatoes'
 import axios from '../../config/axios'
 import history from '../../config/history'
 import './Home.scss'
@@ -42,10 +43,11 @@ class Home extends React.Component<any, State>{
         <header>
           <span className="logo">Logo</span>
           <Dropdown overlay={menu}>
-          <span>{this.state.user.account}<Icon type="down" style={{marginLeft:8}}/></span>
+            <span>{this.state.user.account}<Icon type="down" style={{ marginLeft: 8 }} /></span>
           </Dropdown>
         </header>
         <main>
+          <Tomatoes />
           <Todos />
         </main>
       </div>
