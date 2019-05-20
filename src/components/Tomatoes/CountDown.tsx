@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import './CountDown.scss'
 
 interface Props {
-  timer: number
+  timer: number;
+  duration: number;
   onFinish: () => void
 }
 interface State {
@@ -20,10 +22,11 @@ class CountDown extends Component<Props, State> {
   
   componentDidMount(){
     timeId = setInterval(()=>{
-      document.title = `${this.countDown} 番茄钟`
       const time = this.state.countDown
       this.setState({countDown :time - 1000})
+      document.title = `${this.countDown} 番茄钟`
       if(time < 1000){
+        document.title = `番茄钟`
         this.props.onFinish() //告诉父组件 完成倒计时
         clearInterval(timeId)
       }
@@ -41,10 +44,11 @@ class CountDown extends Component<Props, State> {
   }
 
   render() {
+    const percent = 1 - this.state.countDown/this.props.duration
     return (
       <div className="CountDown" id="CountDown">
-        {this.countDown}
-        <div className="process" />
+        <span>{this.countDown}</span>
+        <div className="process" style={{width: `${percent*100}%`}}/>
         
       </div>
     );

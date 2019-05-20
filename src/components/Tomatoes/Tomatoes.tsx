@@ -30,7 +30,7 @@ class Tomatoes extends Component<Props> {
   }
 
   get unfinishedTomato() {
-    return this.props.tomatoes.filter(t => !t.description && !t.ended_at)[0]
+    return this.props.tomatoes.filter(t => !t.description && !t.ended_at && !t.aborted)[0]
   }
 
   getTomatoes = async ()=> {
@@ -45,7 +45,7 @@ class Tomatoes extends Component<Props> {
 
   startTomato = async () => {
     try {
-      const response = await axios.post('tomatoes', { duration: 20 * 1000 })
+      const response = await axios.post('tomatoes', { duration: 10 * 1000 })
       this.props.addTomato(response.data.resource)
     } catch (e) {
       throw new Error(e)
