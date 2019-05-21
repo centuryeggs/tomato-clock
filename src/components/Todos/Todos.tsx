@@ -1,26 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux'
-import { initTodos } from 'redux/actions/todos'
 import './Todos.scss'
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
-import axios from '../../config/axios'
 
 
 class Todos extends React.Component<any>{
 
-  componentDidMount() {
-    this.getTodos()
-  }
-
-  getTodos = async () => {
-    try {
-      const response = await axios.get('todos')
-      this.props.initTodos(response.data.resources)
-    } catch (e) {
-      throw new Error(e)
-    }
-  }
 
   get noDeletedTodos() {
     return this.props.todos.filter(t => !t.deleted)
@@ -58,8 +44,4 @@ const mapStateToProps = (state, ownProps) => ({ //state是store里的reducer里�
   ...ownProps
 })
 
-const mapDispatchToProps = {
-  initTodos,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Todos);
+export default connect(mapStateToProps)(Todos);
