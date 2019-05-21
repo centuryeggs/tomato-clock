@@ -25,8 +25,6 @@ class Tomatoes extends Component<Props> {
     const obj = _.groupBy(finishedTomatoes, (tomato)=>{ //lodasha
       return format(tomato.started_at, 'YYYY-MM-D')
     })
-    console.log(obj);
-    
     return obj  //返回一个以日期为keys，当天完成的tomatoes（数组）为values的对象
   }
 

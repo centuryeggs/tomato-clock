@@ -17,11 +17,6 @@ const TomatoItem = function (props) {
 
 class TomatoList extends Component<Props> {
 
-  componentDidMount() {
-    console.log(this.props);
-
-  }
-
   get dates() {
     const dates = Object.keys(this.props.finishedTomatoes)
     return dates.sort((a, b) => Date.parse(b) - Date.parse(a)).splice(0, 3)
