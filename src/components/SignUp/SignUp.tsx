@@ -40,7 +40,7 @@ class SignUp extends React.Component<any, State>{
     const { account, password, passwordConfirmation } = this.state
     return (
       <div className="SignUp" id="SignUp">
-        <h1>番茄钟注册</h1>
+        <h1>番茄土豆注册</h1>
         <br />
         <Input
           placeholder="请输入您的用户名"

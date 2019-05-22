@@ -38,7 +38,7 @@ class Login extends React.Component<any, State>{
     const { account, password } = this.state
     return (
       <div className="Login" id="Login">
-        <h1>番茄钟登录</h1>
+        <h1>番茄土豆登录</h1>
         <br />
         <Input
           placeholder="请输入您的用户名"

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Polygon.scss'
 
 interface Props {
   data: any
@@ -21,13 +22,13 @@ class Polygon extends Component<Props, State> {
       let finishedCount = 0
       let lastY
       const pointArr = dates.map(date => {
-        const x = (Date.parse(date) - Date.parse(firstDay)) / range * 240
+        const x = (Date.parse(date) - Date.parse(firstDay)) / range * 299
         finishedCount += this.props.data[date].length
-        const y = (1 - finishedCount / this.props.totalFinishedCount) * 60
+        const y = (1 - finishedCount / this.props.totalFinishedCount) * 100
         lastY = y
         return `${x},${y}`
       })
-      return ['0,60', ...pointArr, `240,${lastY}`,'240,60'].join(' ')
+      return ['0,100', ...pointArr, `299,${lastY}`, '299,100'].join(' ')
     } else {
       return "0,60 240,60"
     }
@@ -39,8 +40,8 @@ class Polygon extends Component<Props, State> {
       <div className="Polygon" id="Polygon">
         <svg>
           <polygon
-            fill="rgb(64, 169, 255, 0.2)"
-            stroke="rgb(64, 169, 255, 0.8)"
+            fill="rgba(233, 82, 87, 0.2)"
+            stroke="rgba(233, 82, 87, 0.8)"
             strokeWidth="1"
             points={this.points()}
           />

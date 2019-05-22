@@ -9,6 +9,7 @@ import Statistics from '../Statistics/Statistics'
 import axios from '../../config/axios'
 import history from '../../config/history'
 import './Home.scss'
+import logo from '../../static/logo.png'
 
 const logout = () => {
   localStorage.setItem('x-token', '')
@@ -16,8 +17,7 @@ const logout = () => {
 }
 const menu = (
   <Menu>
-    <Menu.Item key="1"><Icon type="user" />个人设置</Menu.Item>
-    <Menu.Item key="2" onClick={logout}><Icon type="user" />登出</Menu.Item>
+    <Menu.Item key="1" onClick={logout}><Icon type="user" />登出</Menu.Item>
   </Menu>
 );
 
@@ -44,29 +44,32 @@ class Home extends React.Component<any, State>{
   getTodos = async () => {
     try {
       const response = await axios.get('todos')
-      const todos = response.data.resources.map(t => Object.assign({}, t, {editing: false}))
+      const todos = response.data.resources.map(t => Object.assign({}, t, { editing: false }))
       this.props.initTodos(todos)
     } catch (e) {
       throw new Error(e)
     }
   }
 
-  getTomatoes = async ()=> {
-    try{
+  getTomatoes = async () => {
+    try {
       const response = await axios.get('tomatoes')
       this.props.initTomatoes(response.data.resources)
 
-    }catch(e){
+    } catch (e) {
       throw new Error(e)
     }
   }
-  
+
   render() {
     return (
       <div className="Home" id="Home">
         <header>
-          <span className="logo">Logo</span>
-          <Dropdown overlay={menu}>
+          <div className="logo">
+            <img src={logo} alt=""/>
+            <span>番茄土豆</span>
+          </div>
+          <Dropdown overlay={menu} className="Dropdown">
             <span>{this.state.user.account}<Icon type="down" style={{ marginLeft: 8 }} /></span>
           </Dropdown>
         </header>
@@ -74,14 +77,14 @@ class Home extends React.Component<any, State>{
           <Tomatoes />
           <Todos />
         </main>
-        <Statistics/>
+        <Statistics />
 
       </div>
     )
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({ 
+const mapStateToProps = (state, ownProps) => ({
   todos: state.todos,
   ...ownProps
 })

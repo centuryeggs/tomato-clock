@@ -1,11 +1,14 @@
 #TodoHistoyTodoItem{
   position: relative;
-  font-size: 16px;
-  padding: 8px;
+  font-size: 14px;
+  padding: 8px 16px;;
   &:hover{
     background: #f4f4f4;
     .action{
       display: block;
+      span{
+        color:rgba(233, 82, 87, 0.8);
+      }
     }
   }
   .timeRange{

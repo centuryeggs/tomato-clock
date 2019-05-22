@@ -1,5 +1,6 @@
 #TomatoList{
   margin-top: 16px;
+  padding: 0 8px;
   border-top: 1px solid #ddd;
   .dailyTomatoes{
     padding-top: 16px;
@@ -8,12 +9,12 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 4px;
+      color: rgba(233, 82, 87, 0.8);
+      font-weight: bold;
       .dateTime{
-        color: #999;
         font-size: 16px;
       }
       .finishedCount{
-        color: #999;
         font-size: 13px;
       }
     }

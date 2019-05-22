@@ -3,21 +3,21 @@ import { connect } from 'react-redux';
 import './Statistics.scss'
 import Polygon from './Polygon'
 import TodoHistory from './TodoHistory/TodoHistory'
-import _ from 'lodash' 
+import _ from 'lodash'
 import { format } from 'date-fns';
 
-interface Props{
+interface Props {
   todos: any[]
 }
 
 class Statistics extends Component<Props> {
 
-  get finishedTodos(){
-    return this.props.todos.filter( t => t.completed && !t.deleted)
+  get finishedTodos() {
+    return this.props.todos.filter(t => t.completed && !t.deleted)
   }
 
-  get dailyTodos(){
-    return _.groupBy(this.finishedTodos, (todo)=>{
+  get dailyTodos() {
+    return _.groupBy(this.finishedTodos, (todo) => {
       return format(todo.updated_at, 'YYYY-MM-D')
     })
   }
@@ -26,14 +26,30 @@ class Statistics extends Component<Props> {
     return (
       <div className="Statistics" id="Statistics">
         <ul>
-          <li>统计</li>
-          <li>目标</li>
-          <li>番茄历史</li>
           <li>
-            任务历史
-            累计完成{this.finishedTodos.length}个任务
-            <Polygon data={this.dailyTodos} totalFinishedCount={this.finishedTodos.length}/>
-            </li>
+            <div className="information">
+              <p>统计</p>
+              <p>此功能</p>
+              <p>施工中</p>
+            </div>
+            
+          </li>
+          <li>
+            <div className="information">
+              <p>番茄历史</p>
+              <p>此功能</p>
+              <p>施工中</p>
+            </div>
+            
+          </li>
+          <li className="active">
+            <div className="information">
+              <p>任务历史</p>
+              <p>累计完成任务</p>
+              <p>{this.finishedTodos.length}</p>
+            </div>
+            <Polygon data={this.dailyTodos} totalFinishedCount={this.finishedTodos.length} />
+          </li>
         </ul>
         <TodoHistory />
       </div>
