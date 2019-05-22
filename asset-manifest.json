@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/tomato-clock/build/static/css/main.bdee5ae1.chunk.css",
+    "main.js": "/tomato-clock/build/static/js/main.c5fceeaf.chunk.js",
+    "main.js.map": "/tomato-clock/build/static/js/main.c5fceeaf.chunk.js.map",
+    "runtime~main.js": "/tomato-clock/build/static/js/runtime~main.36792185.js",
+    "runtime~main.js.map": "/tomato-clock/build/static/js/runtime~main.36792185.js.map",
+    "static/css/2.4358233e.chunk.css": "/tomato-clock/build/static/css/2.4358233e.chunk.css",
+    "static/js/2.5e0ac7bc.chunk.js": "/tomato-clock/build/static/js/2.5e0ac7bc.chunk.js",
+    "static/js/2.5e0ac7bc.chunk.js.map": "/tomato-clock/build/static/js/2.5e0ac7bc.chunk.js.map",
+    "index.html": "/tomato-clock/build/index.html",
+    "precache-manifest.378729353619209fd831b740d904b646.js": "/tomato-clock/build/precache-manifest.378729353619209fd831b740d904b646.js",
+    "service-worker.js": "/tomato-clock/build/service-worker.js",
+    "static/css/2.4358233e.chunk.css.map": "/tomato-clock/build/static/css/2.4358233e.chunk.css.map",
+    "static/css/main.bdee5ae1.chunk.css.map": "/tomato-clock/build/static/css/main.bdee5ae1.chunk.css.map"
+  }
+}
