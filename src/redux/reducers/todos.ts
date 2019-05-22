@@ -5,9 +5,12 @@ export default (state: any[] = [], action: any): any => {
   switch (action.type) {
     case ADD_TODO:
       return [action.payload,...state ]
+
     case INIT_TODOS:
       return action.payload
+
     case UPDATE_TODOS:
+        console.log(11);
       return state.map(t => {
         if (action.payload.id === t.id) {
           return action.payload
@@ -15,6 +18,7 @@ export default (state: any[] = [], action: any): any => {
           return t
         }
       })
+      
     case EDIT_TODOS:
       return state.map((t) => {
         if (action.payload === t.id) {

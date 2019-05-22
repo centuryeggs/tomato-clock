@@ -1,0 +1,28 @@
+#TodoHistoyTodoItem{
+  position: relative;
+  font-size: 16px;
+  padding: 8px;
+  &:hover{
+    background: #f4f4f4;
+    .action{
+      display: block;
+    }
+  }
+  .timeRange{
+    color: #999;
+  }
+  .description{
+    color: #222;
+    margin-left: 16px;
+  }
+  .action{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 8px;
+    >span{
+      cursor: pointer;
+      margin-right: 16px;
+    }
+  }
+}
