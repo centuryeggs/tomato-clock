@@ -18,7 +18,6 @@ export default (state: any[] = [], action: any): any => {
           return t
         }
       })
-      
     case EDIT_TODOS:
       return state.map((t) => {
         if (action.payload === t.id) {

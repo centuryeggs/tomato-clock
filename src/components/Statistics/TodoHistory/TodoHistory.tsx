@@ -29,6 +29,12 @@ class TodoHistory extends Component<Props> {
   get deletedTodos() {
     return this.props.todos.filter(t => t.deleted)
   }
+  getWeekday(date){
+    const weekDay = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+    const dateStr = date;
+    const myDate = new Date(Date.parse(dateStr.replace(/-/g, "/")));
+    return weekDay[myDate.getDay()]
+  }
 
   render() {
     const todoList = this.finishedDates.map(date => {
@@ -36,7 +42,7 @@ class TodoHistory extends Component<Props> {
         <div key={date} className="dailyHistory">
           <div className="title">
             <span className="dateTime">{date}</span>
-            <span className="weeklyDate">周五</span>
+            <span className="weeklyDate">{this.getWeekday(date)}</span>
             <span className="count">完成了{this.dailyFinishedTodos[date].length}个任务</span>
           </div>
           <div className="items">
@@ -65,9 +71,9 @@ class TodoHistory extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state, ownProps)=> ({
-    todos: state.todos,
-    ...ownProps
+const mapStateToProps = (state, ownProps) => ({
+  todos: state.todos,
+  ...ownProps
 })
 
 export default connect(

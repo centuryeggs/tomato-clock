@@ -71,7 +71,6 @@ class TodoItem extends Component<Props, State>{
           checked={this.props.completed} />
         {
           this.props.editing ? Editing : Text
-
         }
       </div>
     );

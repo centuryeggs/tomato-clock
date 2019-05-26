@@ -1,7 +1,7 @@
 #TodoItem{
   display: flex;  //checkbox，input，icon等子元素同一行
   align-items: center;  //并中心对齐
-  padding: 8px 0 8px 8px;
+  padding: 8px;
   border-bottom: 1px solid #ddd;
   &:first-child{border-top: 1px solid #ddd;}
   &:hover{background: rgba(221, 221, 221, 0.4)}

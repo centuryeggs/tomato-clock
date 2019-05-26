@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import './Todos.scss'
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
+import { Collapse } from 'antd';
 
+const Panel = Collapse.Panel;
 
 class Todos extends React.Component<any>{
-
 
   get noDeletedTodos() {
     return this.props.todos.filter(t => !t.deleted)
@@ -17,22 +18,28 @@ class Todos extends React.Component<any>{
   get CompletedTodos() {
     return this.noDeletedTodos.filter(t => t.completed)
   }
-  
+
+
+
   public render() {
     return (
       <div className="Todos" id="Todos">
         <TodoInput />
-        <div className="todoLists">
+        <div className="todoLists" >
           {
             this.noCompletedTodos.map((t) =>
               <TodoItem key={t.id} {...t}//把t的所有属性传给TodoItem
               />)
           }
-          {
-            this.CompletedTodos.map((t) =>
-              <TodoItem key={t.id} {...t}
-              />)
-          }
+          <Collapse defaultActiveKey={[]} className="showCompleted">
+            <Panel header="最近完成的任务" key="1">
+              {
+                this.CompletedTodos.map((t) =>
+                  <TodoItem key={t.id} {...t}
+                  />)
+              }
+            </Panel>
+          </Collapse>
         </div>
       </div>
     )
