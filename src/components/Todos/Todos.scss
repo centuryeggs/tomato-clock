@@ -1,0 +1,15 @@
+#Todos {
+  transition: all 1s;
+  padding: 16px 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: calc(50% - 8px);
+  background: #fff;
+  box-shadow: 0 2px 0 rgba(225, 225, 225, 0.2);
+  > .todoLists {
+    margin-top: 16px;
+    .showCompleted{
+      margin-top: 16px;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+#TodoHistory{
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px 32px;
+  margin-bottom: 16px;
+  .dailyHistory{
+    display: flex;
+    padding: 16px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    .title{
+      width: 190px;
+      padding: 8px;
+      .dateTime{
+        color: #222;
+        font-size: 16px;
+      }
+      .weeklyDate{
+        margin-left: 8px;
+        color: #888;
+        font-size: 12px;
+      }
+      .count{
+        display: block;
+        color: #888;
+        font-size: 14px;
+      }
+    }
+    .items{
+      flex: 1;
+    } 
+  }
+}

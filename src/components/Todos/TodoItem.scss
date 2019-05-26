@@ -1,0 +1,40 @@
+#TodoItem{
+  display: flex;  //checkbox，input，icon等子元素同一行
+  align-items: center;  //并中心对齐
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  &:first-child{border-top: 1px solid #ddd;}
+  &:hover{background: rgba(221, 221, 221, 0.4)}
+  &.editing{background:  rgba(233, 82, 87, 0.2);} //选中既有#TodoItem又有.editing的元素
+  &.completed{
+    .text{
+      text-decoration: line-through;
+      color: #a9a9a9;
+    }
+  }
+  >.editing,.text{
+    flex: 1;  
+    //除checkbox、icon固定宽度外，其他地方都是text和editing，
+    //即使点右侧空白处依然可以进入编辑状态，
+  }
+  >.editing{
+    padding: 0 0 0 8px;
+    display: flex;
+    align-items: center;
+    >input{
+      flex: 1;
+      border: 0;
+      padding: 0;
+      outline: none;
+      background: transparent;
+    }
+    >.icon{
+      margin-right: 8px;
+      font-size: 16px;
+      color: #a9a9a9;
+      cursor: pointer;
+    }
+  }
+  
+
+}

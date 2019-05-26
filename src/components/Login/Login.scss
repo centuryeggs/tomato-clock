@@ -1,0 +1,12 @@
+#Login{
+  max-width: 400px;
+  margin: auto ;
+  padding-top: 200px;
+  text-align: center;
+  >*{
+    margin: 10px 0;
+  }
+  >.loginButton{
+    width: 100%;
+  }
+}
