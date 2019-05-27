@@ -5,6 +5,7 @@ import '../Todos/TodoItem.scss'
 import classNames from 'classnames'
 import { editTodos, updateTodos } from 'redux/actions/todos'
 import axios from '../../config/axios'
+import TodoItemInput from './TodoItemInput';
 
 interface Props {
   id: number,
@@ -15,26 +16,18 @@ interface Props {
   editTodos: (payload: number) => any
 }
 interface State {
-  editText: string
+  editText: string,
+  id: number
 }
 
 class TodoItem extends Component<Props, State>{
+
   constructor(props: Props) {
     super(props);
     this.state = {
-      editText: this.props.description
+      editText: this.props.description,
+      id: this.props.id
     }
-  }
-
-
-  onKeyUp = (e) => {
-    if (e.key === 'Enter' && this.state.editText !== '') {
-      this.updateTodos({ description: this.state.editText })
-    }
-  }
-
-  onBlur = () => {
-    this.updateTodos({ description: this.state.editText })
   }
 
   updateTodos = async (params: any) => {
@@ -48,15 +41,14 @@ class TodoItem extends Component<Props, State>{
       throw new Error(e)
     }
   }
+
+  onDoubleClick = () => {
+    this.props.editTodos(this.props.id)
+  }
   render() {
     const Editing = (
       <div className="editing">
-        <input
-          value={this.state.editText}
-          onChange={e => this.setState({ editText: e.target.value })}
-          onKeyUp={this.onKeyUp}
-          onBlur={this.onBlur}
-        />
+        <TodoItemInput editText={this.props.description} id={this.state.id}/>
         <Icon className="icon" type="enter" onClick={() =>
           this.updateTodos({ description: this.state.editText })
         } />
@@ -69,9 +61,7 @@ class TodoItem extends Component<Props, State>{
     const Displaying = (
       <div className="displaying">
         <div className="text"
-          onDoubleClick={
-            () => this.props.editTodos(this.props.id)
-          }>
+          onDoubleClick={this.onDoubleClick}>
           {this.props.description}
         </div>
         <Icon className="icon" type="delete" theme="filled" onClick={
@@ -88,6 +78,7 @@ class TodoItem extends Component<Props, State>{
 
 
     return (
+      
       <div className={toItemClass} id="TodoItem">
         <Checkbox
           onChange={e => this.updateTodos(

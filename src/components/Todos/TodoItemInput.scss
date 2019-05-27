@@ -1,0 +1,18 @@
+#TodoItemInput {
+  flex: 1;
+  align-items: center;
+  display: flex;
+  input {
+    flex: 1;
+    border: 0;
+    padding: 0;
+    outline: none;
+    background: transparent;
+  }
+  > .icon {
+    margin-right: 8px;
+    font-size: 16px;
+    color: #a9a9a9;
+    cursor: pointer;
+  }
+}
