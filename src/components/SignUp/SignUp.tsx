@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import Button from 'antd/lib/button';
-import { Link } from 'react-router-dom';
-
-function SignUp(){
-  return (
-    <div>
-      <h1>Here is signUp!</h1>
-      <br/>
-      <Link to="/login"><Button>ToLogin</Button></Link>
-      <Link to="/"><Button>ToIndex</Button></Link>
-    </div>
-  )
-=======
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Input, Icon, Button } from 'antd';
@@ -76,7 +61,6 @@ class SignUp extends React.Component<any, State>{
       </div>
     )
   }
->>>>>>> 5a80488d9a7a31c07885cc4501d663e6f77a2702
 }
 
 export default SignUp;

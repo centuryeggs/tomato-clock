@@ -20,10 +20,7 @@
     "react": "^16.8.6",
     "react-app-rewired": "^2.1.3",
     "react-dom": "^16.8.6",
-<<<<<<< HEAD
-=======
     "react-redux": "^7.0.3",
->>>>>>> 5a80488d9a7a31c07885cc4501d663e6f77a2702
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
     "redux": "^4.0.1",
@@ -55,11 +52,7 @@
   },
   "devDependencies": {
     "@types/react": "^16.8.16",
-<<<<<<< HEAD
-    "@types/react-router-dom": "^4.3.3"
-=======
     "@types/react-router-dom": "^4.3.3",
     "gh-pages": "^2.0.1"
->>>>>>> 5a80488d9a7a31c07885cc4501d663e6f77a2702
   }
 }

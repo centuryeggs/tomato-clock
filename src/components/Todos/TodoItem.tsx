@@ -11,10 +11,13 @@ interface Props {
   description: string,
   completed: boolean,
   editing: boolean,
-  updateTodos: (payload:any) => any,
-  editTodos: (payload:number) => any
+  updateTodos: (payload: any) => any,
+  editTodos: (payload: number) => any
 }
-interface State { editText: string }
+interface State {
+  editText: string
+}
+
 class TodoItem extends Component<Props, State>{
   constructor(props: Props) {
     super(props);
@@ -22,13 +25,20 @@ class TodoItem extends Component<Props, State>{
       editText: this.props.description
     }
   }
+
+
   onKeyUp = (e) => {
     if (e.key === 'Enter' && this.state.editText !== '') {
-      this.updateTodos( { description: this.state.editText })
+      this.updateTodos({ description: this.state.editText })
     }
   }
-  updateTodos = async ( params: any) => {
-    if(params.completed){
+
+  onBlur = () => {
+    this.updateTodos({ description: this.state.editText })
+  }
+
+  updateTodos = async (params: any) => {
+    if (params.completed) {
       params.completed_at = new Date()
     }
     try {
@@ -41,9 +51,11 @@ class TodoItem extends Component<Props, State>{
   render() {
     const Editing = (
       <div className="editing">
-        <input type="text" value={this.state.editText}
+        <input
+          value={this.state.editText}
           onChange={e => this.setState({ editText: e.target.value })}
           onKeyUp={this.onKeyUp}
+          onBlur={this.onBlur}
         />
         <Icon className="icon" type="enter" onClick={() =>
           this.updateTodos({ description: this.state.editText })
@@ -53,16 +65,28 @@ class TodoItem extends Component<Props, State>{
         } />
       </div>
     )
-    const Text = <span onDoubleClick={
-      () => this.props.editTodos(this.props.id)}
-      className="text">
-      {this.props.description}
-    </span>
+
+    const Displaying = (
+      <div className="displaying">
+        <div className="text"
+          onDoubleClick={
+            () => this.props.editTodos(this.props.id)
+          }>
+          {this.props.description}
+        </div>
+        <Icon className="icon" type="delete" theme="filled" onClick={
+          e => this.updateTodos({ deleted: true })
+        } />
+      </div>
+    )
+
     const toItemClass = classNames({
       TodoItem: true,
       editing: this.props.editing,
       completed: this.props.completed
     })
+
+
     return (
       <div className={toItemClass} id="TodoItem">
         <Checkbox
@@ -70,7 +94,7 @@ class TodoItem extends Component<Props, State>{
             { completed: e.target.checked })}
           checked={this.props.completed} />
         {
-          this.props.editing ? Editing : Text
+          this.props.editing ? Editing : Displaying
         }
       </div>
     );

@@ -10,7 +10,6 @@ export default (state: any[] = [], action: any): any => {
       return action.payload
 
     case UPDATE_TODOS:
-        console.log(11);
       return state.map(t => {
         if (action.payload.id === t.id) {
           return action.payload

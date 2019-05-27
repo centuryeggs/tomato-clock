@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import Button from 'antd/lib/button';
-import { Link } from 'react-router-dom';
-
-function Login(){
-  return (
-    <div>
-      <h1>Here is login!</h1>
-      <br/>
-      <Link to="/"><Button>ToIndex</Button></Link>
-      <Link to="/signUp"><Button>ToSignUp</Button></Link>
-    </div>
-  )
-=======
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Input, Icon, Button } from 'antd';
@@ -67,7 +52,6 @@ class Login extends React.Component<any, State>{
       </div>
     )
   }
->>>>>>> 5a80488d9a7a31c07885cc4501d663e6f77a2702
 }
 
 export default Login;
