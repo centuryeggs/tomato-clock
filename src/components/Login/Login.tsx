@@ -30,7 +30,7 @@ class Login extends React.Component<any, State>{
       console.log('成功！');
       this.props.history.push('/')
     } catch (e) {
-      console.log(e.response.data.errors)
+      alert(e.response.data.errors)
     }
   }
 

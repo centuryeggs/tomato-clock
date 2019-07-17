@@ -33,6 +33,11 @@ class SignUp extends React.Component<any, State>{
       this.props.history.push('/')// 没用constructor(props)，为什么能调用到history
     } catch (e) {
       console.log(e.response.data.errors)
+      if(e.response.data.errors.account){
+        alert('该账号已存在')
+      }else if(e.response.data.errors.password_confirmation){
+        alert('两次密码不一致')
+      }
     }
   }
 
