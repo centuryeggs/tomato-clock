@@ -18,7 +18,10 @@ class Todos extends React.Component<any>{
   get CompletedTodos() {
     return this.noDeletedTodos.filter(t => t.completed)
   }
-
+  get recentCompletedTodos() {
+    return this.CompletedTodos.filter((t, index) => index < 5
+    )
+  }
 
 
   public render() {
@@ -34,7 +37,7 @@ class Todos extends React.Component<any>{
           <Collapse defaultActiveKey={[]} className="showCompleted">
             <Panel header="最近完成的任务" key="1">
               {
-                this.CompletedTodos.map((t) =>
+                this.recentCompletedTodos.map((t) =>
                   <TodoItem key={t.id} {...t}
                   />)
               }

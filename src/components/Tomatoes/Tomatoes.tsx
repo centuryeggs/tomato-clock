@@ -5,7 +5,7 @@ import TomatoAction from './TomatoAction'
 import TomatoList from './TomatoList'
 import { addTomato, updateTomato } from 'redux/actions/tomatoes';
 import axios from '../../config/axios'
-import _ from 'lodash' 
+import _ from 'lodash'
 import { format } from "date-fns";
 
 interface Props {
@@ -22,7 +22,7 @@ class Tomatoes extends Component<Props> {
 
   get finishedTomatoes() {
     const finishedTomatoes = this.props.tomatoes.filter(t => t.description && t.ended_at && !t.aborted)
-    const obj = _.groupBy(finishedTomatoes, (tomato)=>{ //lodasha
+    const obj = _.groupBy(finishedTomatoes, (tomato) => { //lodasha
       return format(tomato.started_at, 'YYYY-MM-D')
     })
     return obj  //返回一个以日期为keys，当天完成的tomatoes（数组）为values的对象
@@ -30,7 +30,7 @@ class Tomatoes extends Component<Props> {
 
   startTomato = async () => {
     try {
-      const response = await axios.post('tomatoes', { duration: 10 * 1000 })
+      const response = await axios.post('tomatoes', { duration: 25 * 60 * 1000 })
       this.props.addTomato(response.data.resource)
     } catch (e) {
       throw new Error(e)
@@ -40,10 +40,10 @@ class Tomatoes extends Component<Props> {
   render() {
     return (
       <div className="Tomatoes" id="Tomatoes">
-        <TomatoAction 
-        startTomato={this.startTomato} 
-        unfinishedTomato={this.unfinishedTomato} 
-        updateTomato={this.props.updateTomato}
+        <TomatoAction
+          startTomato={this.startTomato}
+          unfinishedTomato={this.unfinishedTomato}
+          updateTomato={this.props.updateTomato}
         />
         <TomatoList finishedTomatoes={this.finishedTomatoes} />
       </div>

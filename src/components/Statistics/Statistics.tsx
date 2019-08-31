@@ -7,7 +7,8 @@ import _ from 'lodash'
 import { format } from 'date-fns';
 
 interface Props {
-  todos: any[]
+  todos: any[],
+  tomatoes: any[]
 }
 
 class Statistics extends Component<Props> {
@@ -22,33 +23,27 @@ class Statistics extends Component<Props> {
     })
   }
 
+  get finishedTomatoes() {
+    return this.props.tomatoes.filter(t => !t.aborted && t.ended_at)
+  }
+
+  get dailyTomatoes() {
+    return _.groupBy(this.finishedTomatoes, (tomato) => {
+      let ended_at = new Date(new Date(tomato.started_at).getTime() + 25 * 60 * 1000)
+      return format(ended_at, 'YYYY-MM-D')
+    })
+  }
+
   render() {
     return (
       <div className="Statistics" id="Statistics">
         <ul>
           <li>
-            <div className="information">
-              <p>统计</p>
-              <p>此功能</p>
-              <p>施工中</p>
-            </div>
-            
+            <Polygon data={this.dailyTomatoes} title={"近期番茄完成概况"}/>
+
           </li>
           <li>
-            <div className="information">
-              <p>番茄历史</p>
-              <p>此功能</p>
-              <p>施工中</p>
-            </div>
-            
-          </li>
-          <li className="active">
-            <div className="information">
-              <p>任务历史</p>
-              <p>累计完成任务</p>
-              <p>{this.finishedTodos.length}</p>
-            </div>
-            <Polygon data={this.dailyTodos} totalFinishedCount={this.finishedTodos.length} />
+            <Polygon data={this.dailyTodos} title={"近期任务完成概况"}/>
           </li>
         </ul>
         <TodoHistory />
@@ -59,6 +54,7 @@ class Statistics extends Component<Props> {
 
 const mapStateToProps = (state, ownProps) => ({
   todos: state.todos,
+  tomatoes: state.tomatoes,
   ...ownProps
 })
 

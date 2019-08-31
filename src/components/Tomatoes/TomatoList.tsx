@@ -7,9 +7,10 @@ interface Props {
 }
 
 const TomatoItem = function (props) {
+  let ended_at = new Date(new Date(props.started_at).getTime() + 25 * 60 * 1000)
   return (
     <div className="TomatoItem">
-      <span className="timeRange">{format(props.started_at, 'HH : mm')} - {format(props.ended_at, 'HH : mm')}</span>
+      <span className="timeRange">{format(props.started_at, 'HH : mm')} - {format(ended_at, 'HH : mm')}</span>
       <span className="description">{props.description}</span>
     </div>
   )

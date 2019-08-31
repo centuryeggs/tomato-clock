@@ -1,35 +1,19 @@
-#Statistics{
-  ul{
+#Statistics {
+  ul {
     display: flex;
     border: 1px solid #ddd;
-    height: 120px;
-    >:first-child{
+    height: 202px;
+    > :first-child {
       border-right: 1px solid #ddd;
     }
-    >:last-child{
+    > :last-child {
       border-left: 1px solid #ddd;
     }
-    .active{
+    .active {
       background: #f4f4f4;
     }
-    li{
-      cursor: pointer;
-      position: relative;
+    li {
       flex: 1;
-      .information{
-        position: absolute;
-        margin: 2px 0 0 16px;
-        font-size: 14px;
-        color: #999;
-        :first-child{
-          font-size: 16px;
-          color: #666;
-        }
-        :last-child{
-          font-size: 30px;
-          color: #666;
-        }
-      }
     }
   }
 }
